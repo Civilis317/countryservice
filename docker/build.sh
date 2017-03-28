@@ -6,7 +6,7 @@ cp ../src/main/docker/application.yml .
 
 set -o pipefail
 
-IMAGE=localhost:5000/civilis/countryService
+IMAGE=localhost:6000/civilis/countryService
 
 if [ -z "$1" ];
 then
