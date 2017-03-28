@@ -58,7 +58,8 @@
 	</dependencies>
 
 	<build>
-
+        <finalName>countryService</finalName>
+        
 		<plugins>
 		
 			<plugin>
