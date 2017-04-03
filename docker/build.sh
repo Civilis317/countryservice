@@ -6,7 +6,9 @@ cp ../src/main/docker/application.yml .
 
 set -o pipefail
 
-IMAGE=localhost:6000/civilis/countryService
+APPNAME=civilis/countryservice
+
+IMAGE=192.168.99.100:6000/${APPNAME}
 
 if [ -z "$1" ];
 then
@@ -14,25 +16,17 @@ then
     VERSION=${POM_VERSION}
 else
     echo "Version passed as param: $1"
-    VERSION="$1.RELEASE"
+    VERSION="$1"
 fi
 
-if [ ! -z "${HTTP_PROXY}" ];
-then
-  	docker build --no-cache=true --build-arg http_proxy=${HTTP_PROXY} --build-arg https_proxy=${HTTPS_PROXY} --build-arg no_proxy=${NO_PROXY} -t ${IMAGE}:${VERSION} . | tee build.log || exit 1
 
-    HTTP_PROXY=""
-    HTTPS_PROXY=""
-    NO_PROXY=""
-else
-  	docker build --no-cache=true -t ${IMAGE}:${VERSION} . | tee build.log || exit 1
-fi
+docker build --no-cache=true -t ${APPNAME}:${VERSION} . | tee build.log || exit 1
 
-ID=$(tail -1 build.log | awk '{print $3;}')
-docker tag $ID ${IMAGE}:${VERSION}
-docker tag $ID ${IMAGE}:latest
+docker tag ${APPNAME}:${VERSION} ${IMAGE}:${VERSION}
+docker tag ${APPNAME}:${VERSION} ${IMAGE}:latest
 
 docker push ${IMAGE}:${VERSION}
 docker push ${IMAGE}:latest
+
 
 docker images | grep ${IMAGE}
