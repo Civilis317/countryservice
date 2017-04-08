@@ -1,0 +1,22 @@
+version: "2"
+services:
+  apache:
+    image: localhost:6000/civilis/apachejessie:latest
+#    links:
+#      - tc
+    ports:
+      - "443:443"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+  countryService:
+    image: localhost:6000/civilis/countryService:latest
+    ports:
+      - "8086:8080"
+#    volumes_from: 
+#       - kvs_data
+#    environment:
+#      KVS_NOSSL: "true"
+#      kvs.dropdir: "/kvs_data"
+#      max.validation.request.size: 31457280
+#      JAVA_OPTS: "-Dnossl=true"
+
