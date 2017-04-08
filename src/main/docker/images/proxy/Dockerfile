@@ -10,9 +10,9 @@ RUN a2enmod proxy && a2enmod proxy_http && a2enmod headers && a2enmod ssl
 RUN mkdir /etc/apache2/ssl
 
 ADD ssl /etc/apache2/ssl
-ADD sites-available/oso-od-ssl /etc/apache2/sites-available/oso-od-ssl.conf
+ADD sites-available/countryservice-ssl.conf /etc/apache2/sites-available/countryservice-ssl.conf
 RUN rm /etc/apache2/sites-enabled/*
-RUN a2ensite oso-od-ssl
+RUN a2ensite countryservice-ssl
 
 ADD entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
