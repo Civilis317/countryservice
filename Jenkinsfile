@@ -1,7 +1,7 @@
 node('countryservice') {
   
   stage('Checkout') {
-    git url: "https://github.com/muthai/springbootexample.git", branch: 'develop'
+    git url: "https://github.com/Civilis317/countryservice.git", branch: 'develop'
   }
   
   stage('Build') {
