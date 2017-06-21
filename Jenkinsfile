@@ -1,4 +1,4 @@
-node('countryservice') {
+node() {
   
   stage('Checkout') {
     git url: "https://github.com/Civilis317/countryservice.git", branch: 'develop'
