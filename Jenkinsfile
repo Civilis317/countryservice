@@ -1,4 +1,7 @@
 node() {
+  stage ('Configure') {
+    env.PATH = "${tool 'Maven-3.3.9'}/bin:${env.PATH}"
+  }
   
   stage('Checkout') {
     git url: "https://github.com/Civilis317/countryservice.git", branch: 'develop'
