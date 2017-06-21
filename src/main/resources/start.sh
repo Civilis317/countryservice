@@ -1,4 +1,4 @@
 #!/bin/sh
 
-java -jar ./countryService.jar &
+nohup java -jar ./countryService.jar >/dev/null 2>&1 &
 
