@@ -6,7 +6,7 @@ node() {
   }
   
   stage('Checkout') {
-	#checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[credentialsId: 'reposerver-jenkins-user', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'http://192.168.99.90/svn/myrepo/countryservice/trunk']], workspaceUpdater: [$class: 'CheckoutUpdater']])
+    //checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[credentialsId: 'reposerver-jenkins-user', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'http://192.168.99.90/svn/myrepo/countryservice/trunk']], workspaceUpdater: [$class: 'CheckoutUpdater']])
     checkout([$class: 'GitSCM', branches: [[name: '*/openshift']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Civilis317/countryservice.git']]])
   }
   
